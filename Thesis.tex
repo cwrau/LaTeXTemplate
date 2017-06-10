@@ -1,0 +1,104 @@
+\input{config/Config}
+
+%%%%%
+%% Parameter - Hier auf die eigene Arbeit anpassen
+%%%%%
+
+\newcommand{\dokumententyp}{Bachelorarbeit}
+\newcommand{\abgabedatum}{2017-05-19} 
+\newcommand{\ort}{Paderborn}
+\newcommand{\dokumententitel}{Erstellung einer Vorlage}
+%%\newcommand{\dokumentensubtitel}{Webbasiertes Tool zum Verwalten von Studenten, Dozenten und Studiengruppen}		%% Mit Subtitel
+\newcommand{\dokumentenautor}{Chris Werner Rau}
+\newcommand{\dokumentenpruefer}{Chris Werner Rau}
+
+%%%%%
+
+\hypersetup{
+	colorlinks=false,
+	pdfborder={0 0 0},
+	pdftitle=\dokumententitel,
+	pdfauthor=\dokumentenautor
+} 
+
+\iftoggle{draft} {
+	\newsavebox\mybox
+	\savebox\mybox{\tikz[color=red,opacity=0.3]\node{DRAFT};}
+
+	\newwatermark*[
+	allpages,
+	angle=45,
+	scale=10,
+	xpos=-45,
+	ypos=30
+	]{\usebox\mybox}
+}
+
+\begin{document}
+
+%%%%%
+%% Titelseite
+%%%%%
+
+\input{static/Titelseite}
+
+%%%%%
+%% Draft-Einstellungen
+%%
+%% Für die finale Version auskommentieren!
+%%%%%
+\iftoggle{draft} {
+	\fancyhead[L]{\color{red} Stand: \DTMnow}
+}
+
+%%%%%
+%% Verzeichnisse
+%%%%%
+
+% Römische Seitennummerierung
+\pagenumbering{Roman}
+
+% Inhaltsverzeichnis
+\tableofcontents\newpage
+
+% Abkürzungsverzeichnis
+%\printglossary[type=\acronymtype, style=mylist, title=Abkürzungsverzeichnis, toctitle=Abkürzungsverzeichnis]\newpage
+%\setcounter{table}{0} % printglossary erzeugt eine Tabelle, die die Nummerierung der "echten" Tabellen durcheinander bringt.
+
+%%%%%
+% Verzeichnisse
+%%%%%
+
+% Abbildungsverzeichnis
+\fancyhead[R]{\listfigurename}
+\listoffigures\newpage
+
+% Tabellenverzeichnis
+\fancyhead[R]{\listtablename}
+\listoftables\newpage
+
+% Quelltextverzeichnis
+%\fancyhead[R]{\lstlistlistingname}
+%\lstlistoflistings\newpage
+
+% Kapitelüberschriften für den Arbeitstext
+\fancyhead[R]{\leftmark}
+
+%%%%%
+%% Inhalt
+%%%%%
+
+% Arabische Seitennummerierung
+\pagenumbering{arabic} 
+
+\include{chapter/ExChapter}
+
+%%%%%
+
+\include{library/Anhang}
+
+\include{static/Quellenverzeichnis}
+
+%%%%%
+
+\end{document}

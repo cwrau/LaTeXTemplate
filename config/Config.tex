@@ -1,0 +1,369 @@
+%!TEX root = ../Thesis.tex
+%% Basierend auf TeXnicCenter-Vorlage von Mark Müller
+%%						Willi Nüßer
+%%						Waldemar Penner
+%%						Ulrich Reus
+%%						Frank Plass
+%%						Oliver Tribeß
+%%						Daniel Hintze
+%%%%%
+
+% Wählen Sie die Optionen aus, indem Sie % vor der Option entfernen
+% Dokumentation des KOMA-Script-Packets: scrguide
+
+%%%%%
+%% Optionen zum Layout des Artikels									%%
+%%%%%
+\documentclass[		%
+paper=A4,			% alle weiteren Papierformat einstellbar
+fontsize=12pt,		% Schriftgröße (12pt, 11pt (Standard))
+BCOR=12mm,			% Bindekorrektur, bspw. 1 cm
+DIV=14,				% breiter Satzspiegel
+parskip=half*,		% Absatzformatierung s. scrguide 3.1
+headsepline,		% Trennline zum Seitenkopf
+%footsepline,		% Trennline zum Seitenfuß
+%normalheadings,	% Überschriften etwas kleiner (smallheadings)
+listof=totoc,		% Tabellen & Abbildungsverzeichnis ins Inhaltsverzeichnis
+%bibtotoc,			% Literaturverzeichnis im Inhalt
+%draft				% Überlangen Zeilen in Ausgabe gekennzeichnet
+footinclude=false,	% Fußzeile in die Satzspiegelberechnung einbeziehen
+headinclude=true,	% Kopfzeile in die Satzspiegelberechnung einbeziehen
+final,				% draft beschleunigt die Kompilierung
+ngerman
+]
+{scrartcl}
+
+% Links im PDF
+\usepackage{hyperref}
+
+\pdfinfo{ /ModDate ()  /CreationDate () }
+\hypersetup{pdfinfo={ Creator={}, Producer={} }} 
+
+\pdftrailerid{}
+\pdfsuppressptexinfo15
+
+
+% Umlaute können verwendet werden
+\usepackage[utf8]{inputenc}
+
+\usepackage{xcolor}
+
+\usepackage{etoolbox}
+
+\usepackage{fixfoot}
+
+\usepackage{rotating}
+
+\usepackage{tikz}
+\usetikzlibrary{
+	arrows,
+	positioning,
+	calc,
+	intersections,
+	decorations.markings,
+	fit,
+	chains,
+}
+
+\tikzset{
+	base/.style={
+		draw,
+		rectangle,
+		align=center
+	}
+}
+
+\usepackage{spreadtab}
+
+\newtoggle{draft}\togglefalse{draft}
+	%%	\toggletrue{draft}
+	
+\newcommand{\see}[2][sec]{\hyperref[#1:#2]{siehe \autoref*{#1:#2}}}
+	\newcommand{\seef}[1]{\see[fig]{#1}}
+	\newcommand{\seel}[1]{\see[lst]{#1}}
+	\newcommand{\seei}[1]{\see[itm]{#1}}
+
+\newcommand{\seeb}[2][sec]{\hyperref[#1:#2]{(siehe \autoref*{#1:#2})}}
+	\newcommand{\seelb}[1]{\seeb[lst]{#1}}
+	\newcommand{\seefb}[1]{\seeb[fig]{#1}}
+	\newcommand{\seeib}[1]{\seeb[itm]{#1}}
+
+\newcommand{\seep}[3][sec]{\hyperref[#1:#2]{siehe #3 in \autoref*{#1:#2}}}
+	\newcommand{\seepf}[2]{\seep[fig]{#1}{#2}}
+	\newcommand{\seepl}[2]{\seep[lst]{#1}{#2}}
+	\newcommand{\seepi}[2]{\seep[itm]{#1}{#2}}
+
+\newcommand{\seepb}[3][sec]{\hyperref[#1:#2]{(siehe #3 in \autoref*{#1:#2})}}
+	\newcommand{\seepbf}[2]{\seepb[fig]{#1}{#2}}
+	\newcommand{\seepbl}[2]{\seepb[lst]{#1}{#2}}
+	\newcommand{\seepbi}[2]{\seepb[itm]{#1}{#2}}
+
+\newcommand{\seea}[1]{\hyperref[app:#1]{siehe Anhang \ref*{app:#1}}}
+\newcommand{\seeab}[1]{\hyperref[app:#1]{(siehe Anhang \ref*{app:#1})}}
+\newcommand{\seepa}[2]{\hyperref[app:#1]{siehe #2 in Anhang \ref*{app:#1}}}
+\newcommand{\seepba}[2]{\hyperref[app:#1]{(siehe #2 in Anhang \ref*{app:#1})}}
+
+\newcommand{\seelz}[2]{\hyperref[lst:#1]{siehe \autoref*{lst:#1}, Zeile #2}}
+\newcommand{\seelbz}[2]{\hyperref[lst:#1]{(siehe \autoref*{lst:#1}, Zeile #2)}}
+
+\newcommand{\seeplz}[3]{\hyperref[lst:#1]{siehe #3 in \autoref*{lst:#1}, Zeile #2}}
+\newcommand{\seeplbz}[3]{\hyperref[lst:#1]{(siehe #3 in \autoref*{lst:#1}, Zeile #2)}}
+
+
+\newcommand{\ar}[2][sec]{\autoref{#1:#2}}
+	\newcommand{\arl}[1]{\ar[lst]{#1}}
+	\newcommand{\arf}[1]{\ar[fig]{#1}}
+	\newcommand{\ari}[1]{\ar[itm]{#1}}
+
+\newcommand{\arb}[2][sec]{(\autoref{#1:#2})}
+	\newcommand{\arfb}[1]{\arb[fig]{#1}}
+	\newcommand{\arlb}[1]{\arb[lst]{#1}}
+	\newcommand{\arib}[1]{\arb[itm]{#1}}
+
+\newcommand{\arlz}[2]{\hyperref[lst:#1]{\autoref*{lst:#1}, Zeile #2}}
+\newcommand{\arlbz}[2]{\hyperref[lst:#1]{(\autoref*{lst:#1}, Zeile #2)}}
+
+
+\newcommand{\ctapp}[2]{\footnote{\hyperref[app:#1]{#2}}}
+
+\newcommand{\cit}[3]{\footcite[#2][#3]{#1}}
+	\newcommand{\ct}[2][]{\cit{#2}{#1}{}}
+		\newcommand{\vg}[1]{\ct[vgl.]{#1}}
+
+\usepackage{float}
+\usepackage{ltablex}
+%% \usepackage{fixltx2e}
+
+%\setuptoc{toc}{totoc} % Inhaltsverzeichnis ins Inhaltsverzeichnis
+
+% Neue Deutsche Rechtschreibung und Deutsche Standardtexte
+\usepackage[ngerman]{babel}
+
+\hyphenation{ein-zu-chec-ken}
+
+% Echte Umlaute
+\usepackage[T1]{fontenc}
+
+% Latin Modern Font, Type1-Schriftart für nicht-englische Texte
+\usepackage{lmodern}
+
+% 1/2-zeiliger Zeilenabstand
+\usepackage[onehalfspacing]{setspace}
+
+% Für die Defenition eigener Kopf- und Fußzeilen
+\usepackage{fancyhdr}
+
+% Für die Verwendung von Grafiken
+\usepackage[]{graphicx}
+\graphicspath{{img/}}
+
+% Bessere Tabellen
+\usepackage{tabularx}
+
+% Für die Befehle \toprule, \midrule und \bottomrule, z.B. in Tabellen
+\usepackage{booktabs}
+
+% Erlaubt die Benutzung von Farben
+\usepackage{color}
+
+% Verbessertes URL-Handling mit \url{http://...}
+\usepackage{url}
+
+% Listen ohne Abstände \begin{compactlist}...\end{compactlist}
+\usepackage{paralist}
+
+\iftoggle{draft} {
+	% Ausgabe der aktuellen Uhrzeit für die Draft-Versionen
+	\usepackage{datetime2}
+	\DTMsetstyle{iso}
+}
+
+% Deutsche Anführungszeichen
+\usepackage[babel,german=quotes]{csquotes}
+
+% Verbessert das Referenzieren von Kapiteln, Abbildungen etc.
+\usepackage[ngerman,capitalise]{cleveref}
+
+% Konfiguration der Abbildungs- und Tabellenbezeichnungen
+\usepackage[format=hang, font={footnotesize, sf}, labelfont=bf, justification=raggedright,singlelinecheck=false]{caption}
+
+% Verbessert die Lesbarkeit durch Mikrotypografie
+\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+
+% Zitate und Quellenverzeichnis
+\usepackage[
+	style=authoryear-icomp,		% Zitierstil
+	giveninits=false,			% false = Vornamen werden ausgeschrieben
+	natbib=true,
+	urldate=edtf,				% "besucht am" - Datum
+	%url=false,
+	date=edtf,
+	seconds=true,
+	dashed=false,
+	maxcitenames=3,				% max. Anzahl Autorennamen in Zitaten
+	maxbibnames=99,				% max. Anzahl Autorennamen im Quellenverzeichnis
+	%backend=bibtex				% Ggf. für ältere Distributionen bibtex verwenden
+	backend=biber
+]{biblatex}
+\iftoggle{draft} {
+	\usepackage[printwatermark]{xwatermark}
+}
+
+% Bibliograpthy
+\bibliography{library/library}
+
+% Keine Einrückung bei einem neuen Absatz
+\parindent 0pt
+
+% Ebenentiefe der Nummerierung
+\setcounter{secnumdepth}{3}
+
+% Gliederungstiefe im Inhaltsverzeichnis
+\setcounter{tocdepth}{3}
+
+% Tabellen- und Abbildungsverzeichnis mit Bezeichnung:
+\usepackage[titles]{tocloft}
+
+% Sourcecode-Listings
+\usepackage{listings}
+
+\definecolor{groovyblue}{HTML}{0000A0}
+\definecolor{groovygreen}{HTML}{008000}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+
+\lstdefinelanguage{base}[]{Java}{
+	keywordstyle=\color{groovyblue}\bfseries,
+	stringstyle=\color{groovygreen}\ttfamily
+}
+ 
+\lstdefinelanguage{Powershell}[]{base}{
+	keywords=[3]{CmdletBinding, param, string, function, ValidateSet, Switch, @, parameter, Mandatory, \$true, \$false, \$null, Microsoft, Win32, Registry, System, Security, Principal, NTAccount, SecurityIdentifier, IO, Path, Get, Command, Name, ErrorAction, SilentlyContinue, Invoke, WebRequest, UseBasicParsing, Expression, object, Content, foreach, like, StringSplitOptions, notlike, IsNullOrEmpty, ForegroundColor, Write, Host, Push, Location, Set, Encoding, Force, Split, Pop, NetFirewallRule, DisplayName, Group, Action, Direction, Enabled, Protocol, LocalPort, Measure, Object, eq, ne, Program, New, Value, PropertyType, Out, Null, ItemProperty, hive, key, Service, StartupType, Stop, Enable, PSRemoting, Start, AccessControl, AccessControlSections, RegistryKeyPermissionCheck, RegistryRights, RegistryAccessRule},
+	morekeywords={in}
+}
+
+\lstdefinelanguage{Jenkinsfile}[]{base}{
+	keywords=[3]{node, dir, fileExists, sh, script, returnStdout, properties, parameters, choice, choices, name, defaultValue, description, string, isUnix, error, withEnv, withCredentials, credentialsId, usernameVariable, passwordVariable, println, parallel, stash, includes, archiveArtifacts, artifacts, defaultExcludes, fingerprint, onlyIfSuccessful, step, \$class, projectName, filter, unstash, input, message, stage, build, job, value, milestone, withMaven, maven, globalMavenSettingsConfig},
+	morekeywords={def, as, in, use, @NonCPS, groovy}
+}
+
+\lstset{
+	breaklines=true,
+	postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}},
+	numbers=left,
+	inputencoding=utf8,
+	emptylines=1,
+	showlines=true
+}
+
+\lstloadlanguages{base, Powershell, Jenkinsfile}
+
+% Bestimmte Warnungen unterdrücken
+% siehe http://tex.stackexchange.com/questions/51867/koma-warning-about-toc
+\usepackage{scrhack}
+
+%% http://tex.stackexchange.com/questions/126839/how-to-add-a-colon-after-listing-label
+\makeatletter
+\begingroup\let\newcounter\@gobble\let\setcounter\@gobbletwo
+	\globaldefs\@ne \let\c@loldepth\@ne
+	\newlistof{listings}{lol}{\lstlistlistingname}
+\endgroup
+\let\l@lstlisting\l@listings
+\makeatother
+
+\renewcommand*\cftfigpresnum{Abbildung~}
+\renewcommand*\cfttabpresnum{Tabelle~}
+\renewcommand*\cftlistingspresnum{Listing~}
+\renewcommand{\cftfigaftersnum}{:}
+\renewcommand{\cfttabaftersnum}{:}
+\renewcommand{\cftlistingsaftersnum}{:}
+\settowidth{\cftfignumwidth}{\cftfigpresnum 99~\cftfigaftersnum}
+\settowidth{\cfttabnumwidth}{\cfttabpresnum 99~\cftfigaftersnum}
+\settowidth{\cftlistingsnumwidth}{\cftlistingspresnum 99~\cftfigaftersnum}
+\setlength{\cfttabindent}{1.5em}
+\setlength{\cftfigindent}{1.5em}
+\setlength{\cftlistingsindent}{1.5em}
+
+\renewcommand\lstlistlistingname{Listingverzeichnis}
+ 
+% Style für Kopf- und Fußzeilenfelder
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\leftmark}
+\fancyfoot[R]{\thepage}
+\renewcommand{\sectionmark}[1]{\markboth{#1}{#1}}
+\fancypagestyle{plain}{}
+
+% Macro für Quellenangaben unter Abbildungen und Tabellen
+\newcommand{\source}[1]{{\vspace{-1mm}\\\footnotesize\textsf{\textbf{Quelle:}} \textsf{#1}\par}}
+
+% Anpassungen der Formatierung an Eclipse-Aussehen
+% http://jevopi.blogspot.de/2010/03/nicely-formatted-listings-in-latex-with.html
+%\definecolor{sh_comment}{rgb}{0.12, 0.38, 0.18 } %adjusted, in Eclipse: {0.25, 0.42, 0.30 } = #3F6A4D
+%\definecolor{sh_keyword}{rgb}{0.37, 0.08, 0.25}	% #5F1441
+%\definecolor{sh_string}{rgb}{0.06, 0.10, 0.98} % #101AF9
+% Für Druckausgabe sollte alles schwarz sein
+\definecolor{sh_comment}{rgb}{0.0, 0.0, 0.0 }
+\definecolor{sh_keyword}{rgb}{0.0, 0.0, 0.0 }
+\definecolor{sh_string}{rgb}{0.0, 0.0, 0.0 }
+
+\lstset{ %
+	language=Java,
+	basicstyle=\small\ttfamily,
+	fontadjust,
+	xrightmargin=1mm,
+	xleftmargin=5mm,
+	tabsize=2,
+	columns=flexible,
+	showstringspaces=false,
+	rulesepcolor=\color{black},
+	showspaces=false,showtabs=false,tabsize=2,
+	stringstyle=\color{sh_string},
+	keywordstyle=\color{sh_keyword}\bfseries,
+	commentstyle=\color{sh_comment}\itshape,
+	captionpos=t,
+	lineskip=-0.3em
+}
+
+%\makeatletter
+%\def\l@lstlisting#1#2{\@dottedtocline{1}{0em}{1.5em}{\lstlistingname\space{#1}}{#2}}
+%\makeatother
+
+% Anhangsverzeichnis
+\usepackage[nohints]{minitoc} %Anhangsverzeichnis
+
+\makeatletter
+\newcounter{fktnr}\setcounter{fktnr}{0}
+\newcounter{subfktnr}[fktnr]\setcounter{subfktnr}{0}
+
+\renewcommand\thesubfktnr{\arabic{fktnr}.\arabic{subfktnr}}
+\newcounter{anhangcounter}
+\newcommand{\blatt}{\stepcounter{anhangcounter}}
+
+\newcommand{\anhang}[1]{\setcounter{anhangcounter}{0}\refstepcounter{fktnr}
+\addcontentsline{fk}{subsection}{Anhang~\thefktnr: \hspace*{1em}#1}
+\subsection*{{Anhang~\thefktnr \hspace*{1em} #1 \hspace*{-1em}}}
+}
+
+\newcommand{\subanhang}[1]{\setcounter{anhangcounter}{0}\refstepcounter{subfktnr}
+\addcontentsline{fk}{subsubsection}{Anhang~\thesubfktnr: \hspace*{1em}#1}
+\subsubsection*{{Anhang~\thesubfktnr \hspace*{1em} #1 \hspace*{-1em}}}
+}
+
+\newcommand{\anhangsverzeichnis}{\mtcaddsection{\subsection*{Anhangsverzeichnis \@mkboth{FKT}{FKT}}}\@starttoc{fk}\newpage}
+
+% Abkürzungsverzeichnis
+\usepackage[acronym,			% create list of acronyms
+			nonumberlist,
+			toc,
+			section,
+			nomain,				% don't need main glossary for this example
+			hyperfirst=false	% don't hyperlink first use
+			]{glossaries}
+\newglossarystyle{mylist}{%
+\setglossarystyle{long}% base this style on the list style
+\renewcommand*{\glossaryentryfield}[5]{%
+	\glsentryitem{##1}\textbf{##2} & ##3 \\}%
+}
+
+\input{library/Abkuerzungen}
+\makeglossaries\makeglossaries
