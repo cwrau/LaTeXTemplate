@@ -5,10 +5,10 @@
 %%%%%
 
 \newcommand{\dokumententyp}{Bachelorarbeit}
-\newcommand{\abgabedatum}{2017-05-19} 
+\newcommand{\abgabedatum}{2017--05--19}
 \newcommand{\ort}{Paderborn}
 \newcommand{\dokumententitel}{Erstellung einer Vorlage}
-%%\newcommand{\dokumentensubtitel}{Webbasiertes Tool zum Verwalten von Studenten, Dozenten und Studiengruppen}		%% Mit Subtitel
+%%\newcommand{\dokumentensubtitel}{Webbasiertes Tool zum Verwalten von Studenten, Dozenten und Studiengruppen}  %% Mit Subtitel
 \newcommand{\dokumentenautor}{Chris Werner Rau}
 \newcommand{\dokumentenpruefer}{Chris Werner Rau}
 
@@ -18,11 +18,11 @@
 	colorlinks=false,
 	pdfborder={0 0 0},
 	pdftitle=\dokumententitel,
-	pdfauthor=\dokumentenautor
-} 
+	pdfauthor=\dokumentenautor{}
+}
 
 \iftoggle{draft} {
-	\newsavebox\mybox
+	\newsavebox\mybox{}
 	\savebox\mybox{\tikz[color=red,opacity=0.3]\node{DRAFT};}
 
 	\newwatermark*[
@@ -89,7 +89,7 @@
 %%%%%
 
 % Arabische Seitennummerierung
-\pagenumbering{arabic} 
+\pagenumbering{arabic}
 
 \include{chapter/ExChapter}
 

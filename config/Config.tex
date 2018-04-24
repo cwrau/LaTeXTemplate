@@ -1,35 +1,35 @@
 %!TEX root = ../Thesis.tex
 %% Basierend auf TeXnicCenter-Vorlage von Mark Müller
-%%						Willi Nüßer
-%%						Waldemar Penner
-%%						Ulrich Reus
-%%						Frank Plass
-%%						Oliver Tribeß
-%%						Daniel Hintze
+%%                                        Willi Nüßer
+%%                                        Waldemar Penner
+%%                                        Ulrich Reus
+%%                                        Frank Plass
+%%                                        Oliver Tribeß
+%%                                        Daniel Hintze
 %%%%%
 
 % Wählen Sie die Optionen aus, indem Sie % vor der Option entfernen
 % Dokumentation des KOMA-Script-Packets: scrguide
 
 %%%%%
-%% Optionen zum Layout des Artikels									%%
+%% Optionen zum Layout des Artikels %%
 %%%%%
-\documentclass[		%
-paper=A4,			% alle weiteren Papierformat einstellbar
-fontsize=12pt,		% Schriftgröße (12pt, 11pt (Standard))
-BCOR=12mm,			% Bindekorrektur, bspw. 1 cm
-DIV=14,				% breiter Satzspiegel
-parskip=half*,		% Absatzformatierung s. scrguide 3.1
-headsepline,		% Trennline zum Seitenkopf
-%footsepline,		% Trennline zum Seitenfuß
-%normalheadings,	% Überschriften etwas kleiner (smallheadings)
-listof=totoc,		% Tabellen & Abbildungsverzeichnis ins Inhaltsverzeichnis
-%bibtotoc,			% Literaturverzeichnis im Inhalt
-%draft				% Überlangen Zeilen in Ausgabe gekennzeichnet
-footinclude=false,	% Fußzeile in die Satzspiegelberechnung einbeziehen
-headinclude=true,	% Kopfzeile in die Satzspiegelberechnung einbeziehen
-final,				% draft beschleunigt die Kompilierung
-ngerman
+\documentclass[     %
+	paper=A4,           % alle weiteren Papierformat einstellbar
+	fontsize=12pt,      % Schriftgröße (12pt, 11pt (Standard))
+	BCOR=12mm,          % Bindekorrektur, bspw. 1 cm
+	DIV=14,             % breiter Satzspiegel
+	parskip=half*,      % Absatzformatierung s. scrguide 3.1
+	headsepline,        % Trennline zum Seitenkopf
+	%footsepline,       % Trennline zum Seitenfuß
+	%normalheadings,    % Überschriften etwas kleiner (smallheadings)
+	listof=totoc,       % Tabellen & Abbildungsverzeichnis ins Inhaltsverzeichnis
+	%bibtotoc,          % Literaturverzeichnis im Inhalt
+	%draft              % Überlangen Zeilen in Ausgabe gekennzeichnet
+	footinclude=false,  % Fußzeile in die Satzspiegelberechnung einbeziehen
+	headinclude=true,   % Kopfzeile in die Satzspiegelberechnung einbeziehen
+	final,              % draft beschleunigt die Kompilierung
+	ngerman
 ]
 {scrartcl}
 
@@ -37,7 +37,7 @@ ngerman
 \usepackage{hyperref}
 
 \pdfinfo{ /ModDate ()  /CreationDate () }
-\hypersetup{pdfinfo={ Creator={}, Producer={} }} 
+\hypersetup{pdfinfo={ Creator={}, Producer={} }}
 
 \pdftrailerid{}
 \pdfsuppressptexinfo15
@@ -67,41 +67,41 @@ ngerman
 
 \tikzset{
 	base/.style={
-		draw,
-		rectangle,
-		align=center
-	}
+			draw,
+			rectangle,
+			align=center
+		}
 }
 
 \usepackage{spreadtab}
 
 \newtoggle{draft}\togglefalse{draft}
-	%%	\toggletrue{draft}
-	
+% \toggletrue{draft}
+
 \newcommand{\see}[2][sec]{\hyperref[#1:#2]{siehe \autoref*{#1:#2}}}
-	\newcommand{\seef}[1]{\see[fig]{#1}}
-	\newcommand{\seel}[1]{\see[lst]{#1}}
-	\newcommand{\seei}[1]{\see[itm]{#1}}
+\newcommand{\seef}[1]{\see[fig]{#1}}
+\newcommand{\seel}[1]{\see[lst]{#1}}
+\newcommand{\seei}[1]{\see[itm]{#1}}
 
 \newcommand{\seeb}[2][sec]{\hyperref[#1:#2]{(siehe \autoref*{#1:#2})}}
-	\newcommand{\seelb}[1]{\seeb[lst]{#1}}
-	\newcommand{\seefb}[1]{\seeb[fig]{#1}}
-	\newcommand{\seeib}[1]{\seeb[itm]{#1}}
+\newcommand{\seelb}[1]{\seeb[lst]{#1}}
+\newcommand{\seefb}[1]{\seeb[fig]{#1}}
+\newcommand{\seeib}[1]{\seeb[itm]{#1}}
 
 \newcommand{\seep}[3][sec]{\hyperref[#1:#2]{siehe #3 in \autoref*{#1:#2}}}
-	\newcommand{\seepf}[2]{\seep[fig]{#1}{#2}}
-	\newcommand{\seepl}[2]{\seep[lst]{#1}{#2}}
-	\newcommand{\seepi}[2]{\seep[itm]{#1}{#2}}
+\newcommand{\seepf}[2]{\seep[fig]{#1}{#2}}
+\newcommand{\seepl}[2]{\seep[lst]{#1}{#2}}
+\newcommand{\seepi}[2]{\seep[itm]{#1}{#2}}
 
 \newcommand{\seepb}[3][sec]{\hyperref[#1:#2]{(siehe #3 in \autoref*{#1:#2})}}
-	\newcommand{\seepbf}[2]{\seepb[fig]{#1}{#2}}
-	\newcommand{\seepbl}[2]{\seepb[lst]{#1}{#2}}
-	\newcommand{\seepbi}[2]{\seepb[itm]{#1}{#2}}
+\newcommand{\seepbf}[2]{\seepb[fig]{#1}{#2}}
+\newcommand{\seepbl}[2]{\seepb[lst]{#1}{#2}}
+\newcommand{\seepbi}[2]{\seepb[itm]{#1}{#2}}
 
-\newcommand{\seea}[1]{\hyperref[app:#1]{siehe Anhang \ref*{app:#1}}}
-\newcommand{\seeab}[1]{\hyperref[app:#1]{(siehe Anhang \ref*{app:#1})}}
-\newcommand{\seepa}[2]{\hyperref[app:#1]{siehe #2 in Anhang \ref*{app:#1}}}
-\newcommand{\seepba}[2]{\hyperref[app:#1]{(siehe #2 in Anhang \ref*{app:#1})}}
+\newcommand{\seea}[1]{\hyperref[app:#1]{siehe Anhang~\ref*{app:#1}}}
+\newcommand{\seeab}[1]{\hyperref[app:#1]{(siehe Anhang~\ref*{app:#1})}}
+\newcommand{\seepa}[2]{\hyperref[app:#1]{siehe #2 in Anhang~\ref*{app:#1}}}
+\newcommand{\seepba}[2]{\hyperref[app:#1]{(siehe #2 in Anhang~\ref*{app:#1})}}
 
 \newcommand{\seelz}[2]{\hyperref[lst:#1]{siehe \autoref*{lst:#1}, Zeile #2}}
 \newcommand{\seelbz}[2]{\hyperref[lst:#1]{(siehe \autoref*{lst:#1}, Zeile #2)}}
@@ -111,14 +111,14 @@ ngerman
 
 
 \newcommand{\ar}[2][sec]{\autoref{#1:#2}}
-	\newcommand{\arl}[1]{\ar[lst]{#1}}
-	\newcommand{\arf}[1]{\ar[fig]{#1}}
-	\newcommand{\ari}[1]{\ar[itm]{#1}}
+\newcommand{\arl}[1]{\ar[lst]{#1}}
+\newcommand{\arf}[1]{\ar[fig]{#1}}
+\newcommand{\ari}[1]{\ar[itm]{#1}}
 
 \newcommand{\arb}[2][sec]{(\autoref{#1:#2})}
-	\newcommand{\arfb}[1]{\arb[fig]{#1}}
-	\newcommand{\arlb}[1]{\arb[lst]{#1}}
-	\newcommand{\arib}[1]{\arb[itm]{#1}}
+\newcommand{\arfb}[1]{\arb[fig]{#1}}
+\newcommand{\arlb}[1]{\arb[lst]{#1}}
+\newcommand{\arib}[1]{\arb[itm]{#1}}
 
 \newcommand{\arlz}[2]{\hyperref[lst:#1]{\autoref*{lst:#1}, Zeile #2}}
 \newcommand{\arlbz}[2]{\hyperref[lst:#1]{(\autoref*{lst:#1}, Zeile #2)}}
@@ -127,8 +127,10 @@ ngerman
 \newcommand{\ctapp}[2]{\footnote{\hyperref[app:#1]{#2}}}
 
 \newcommand{\cit}[3]{\footcite[#2][#3]{#1}}
-	\newcommand{\ct}[2][]{\cit{#2}{#1}{}}
-		\newcommand{\vg}[1]{\ct[vgl.]{#1}}
+\newcommand{\ct}[2][]{\cit{#2}{#1}{}}
+\newcommand{\vg}[1]{\ct[vgl.]{#1}}
+
+\newcommand{\ctsep}{\textsuperscript{,}}
 
 \usepackage{float}
 \usepackage{ltablex}
@@ -181,6 +183,8 @@ ngerman
 % Deutsche Anführungszeichen
 \usepackage[babel,german=quotes]{csquotes}
 
+\usepackage{amsmath}
+
 % Verbessert das Referenzieren von Kapiteln, Abbildungen etc.
 \usepackage[ngerman,capitalise]{cleveref}
 
@@ -192,24 +196,24 @@ ngerman
 
 % Zitate und Quellenverzeichnis
 \usepackage[
-	style=authoryear-icomp,		% Zitierstil
-	giveninits=false,			% false = Vornamen werden ausgeschrieben
+	style=authoryear-icomp,  % Zitierstil
+	giveninits=false,        % false = Vornamen werden ausgeschrieben
 	natbib=true,
-	urldate=edtf,				% "besucht am" - Datum
+	urldate=iso,            % "besucht am" - Datum
 	%url=false,
-	date=edtf,
+	date=iso,
 	seconds=true,
 	dashed=false,
-	maxcitenames=3,				% max. Anzahl Autorennamen in Zitaten
-	maxbibnames=99,				% max. Anzahl Autorennamen im Quellenverzeichnis
-	%backend=bibtex				% Ggf. für ältere Distributionen bibtex verwenden
+	maxcitenames=3,          % max. Anzahl Autorennamen in Zitaten
+	maxbibnames=99,          % max. Anzahl Autorennamen im Quellenverzeichnis
+	%backend=bibtex          % Ggf. für ältere Distributionen bibtex verwenden
 	backend=biber
 ]{biblatex}
 \iftoggle{draft} {
 	\usepackage[printwatermark]{xwatermark}
 }
 
-% Bibliograpthy
+% Bibliography
 \bibliography{library/library}
 
 % Keine Einrückung bei einem neuen Absatz
@@ -235,7 +239,7 @@ ngerman
 	keywordstyle=\color{groovyblue}\bfseries,
 	stringstyle=\color{groovygreen}\ttfamily
 }
- 
+
 \lstdefinelanguage{Powershell}[]{base}{
 	keywords=[3]{CmdletBinding, param, string, function, ValidateSet, Switch, @, parameter, Mandatory, \$true, \$false, \$null, Microsoft, Win32, Registry, System, Security, Principal, NTAccount, SecurityIdentifier, IO, Path, Get, Command, Name, ErrorAction, SilentlyContinue, Invoke, WebRequest, UseBasicParsing, Expression, object, Content, foreach, like, StringSplitOptions, notlike, IsNullOrEmpty, ForegroundColor, Write, Host, Push, Location, Set, Encoding, Force, Split, Pop, NetFirewallRule, DisplayName, Group, Action, Direction, Enabled, Protocol, LocalPort, Measure, Object, eq, ne, Program, New, Value, PropertyType, Out, Null, ItemProperty, hive, key, Service, StartupType, Stop, Enable, PSRemoting, Start, AccessControl, AccessControlSections, RegistryKeyPermissionCheck, RegistryRights, RegistryAccessRule},
 	morekeywords={in}
@@ -264,8 +268,8 @@ ngerman
 %% http://tex.stackexchange.com/questions/126839/how-to-add-a-colon-after-listing-label
 \makeatletter
 \begingroup\let\newcounter\@gobble\let\setcounter\@gobbletwo
-	\globaldefs\@ne \let\c@loldepth\@ne
-	\newlistof{listings}{lol}{\lstlistlistingname}
+\globaldefs\@ne \let\c@loldepth\@ne
+\newlistof{listings}{lol}{\lstlistlistingname}
 \endgroup
 \let\l@lstlisting\l@listings
 \makeatother
@@ -284,7 +288,7 @@ ngerman
 \setlength{\cftlistingsindent}{1.5em}
 
 \renewcommand\lstlistlistingname{Listingverzeichnis}
- 
+
 % Style für Kopf- und Fußzeilenfelder
 \pagestyle{fancy}
 \fancyhf{}
@@ -299,7 +303,7 @@ ngerman
 % Anpassungen der Formatierung an Eclipse-Aussehen
 % http://jevopi.blogspot.de/2010/03/nicely-formatted-listings-in-latex-with.html
 %\definecolor{sh_comment}{rgb}{0.12, 0.38, 0.18 } %adjusted, in Eclipse: {0.25, 0.42, 0.30 } = #3F6A4D
-%\definecolor{sh_keyword}{rgb}{0.37, 0.08, 0.25}	% #5F1441
+%\definecolor{sh_keyword}{rgb}{0.37, 0.08, 0.25} % #5F1441
 %\definecolor{sh_string}{rgb}{0.06, 0.10, 0.98} % #101AF9
 % Für Druckausgabe sollte alles schwarz sein
 \definecolor{sh_comment}{rgb}{0.0, 0.0, 0.0 }
@@ -340,30 +344,30 @@ ngerman
 \newcommand{\blatt}{\stepcounter{anhangcounter}}
 
 \newcommand{\anhang}[1]{\setcounter{anhangcounter}{0}\refstepcounter{fktnr}
-\addcontentsline{fk}{subsection}{Anhang~\thefktnr: \hspace*{1em}#1}
-\subsection*{{Anhang~\thefktnr \hspace*{1em} #1 \hspace*{-1em}}}
+	\addcontentsline{fk}{subsection}{Anhang~\thefktnr: \hspace*{1em}#1}
+	\subsection*{{Anhang~\thefktnr{} \hspace*{1em} #1 \hspace*{-1em}}}
 }
 
 \newcommand{\subanhang}[1]{\setcounter{anhangcounter}{0}\refstepcounter{subfktnr}
-\addcontentsline{fk}{subsubsection}{Anhang~\thesubfktnr: \hspace*{1em}#1}
-\subsubsection*{{Anhang~\thesubfktnr \hspace*{1em} #1 \hspace*{-1em}}}
+	\addcontentsline{fk}{subsubsection}{Anhang~\thesubfktnr: \hspace*{1em}#1}
+	\subsubsection*{{Anhang~\thesubfktnr{} \hspace*{1em} #1 \hspace*{-1em}}}
 }
 
 \newcommand{\anhangsverzeichnis}{\mtcaddsection{\subsection*{Anhangsverzeichnis \@mkboth{FKT}{FKT}}}\@starttoc{fk}\newpage}
 
 % Abkürzungsverzeichnis
-\usepackage[acronym,			% create list of acronyms
-			nonumberlist,
-			toc,
-			section,
-			nomain,				% don't need main glossary for this example
-			hyperfirst=false	% don't hyperlink first use
-			]{glossaries}
+\usepackage[acronym,  % create list of acronyms
+	nonumberlist,
+	toc,
+	section,
+	nomain,           % don't need main glossary for this example
+	hyperfirst=false  % don't hyperlink first use
+]{glossaries}
 \newglossarystyle{mylist}{%
-\setglossarystyle{long}% base this style on the list style
-\renewcommand*{\glossaryentryfield}[5]{%
-	\glsentryitem{##1}\textbf{##2} & ##3 \\}%
+	\setglossarystyle{long}% base this style on the list style
+	\renewcommand*{\glossaryentryfield}[5]{%
+		\glsentryitem{##1}\textbf{##2} & ##3 \\}%
 }
 
 \input{library/Abkuerzungen}
-\makeglossaries\makeglossaries
+\makeglossaries\makeglossaries{}
